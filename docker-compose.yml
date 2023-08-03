@@ -1,0 +1,28 @@
+version: "3.4"
+
+services:
+  nginx-proxy:
+    build:
+      context: ./nginx
+    container_name: nginx
+    ports:
+      - 8000:80
+    networks:
+      - internalNetwork
+
+  firstapp:
+    build: 
+      context: ./firstApp
+    container_name: firstapp
+    networks:
+      - internalNetwork
+
+  secondapp:
+    build: 
+      context: ./secondApp
+    container_name: secondApp
+    networks:
+      - internalNetwork
+    
+networks:
+  internalNetwork:
